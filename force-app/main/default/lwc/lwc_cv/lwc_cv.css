@@ -5,3 +5,10 @@
   .cv-profile-img {
   float: right;
 }
+  .name {
+    margin-top:10px;
+    margin-bottom: 0;
+    font-size: 1.75em;
+    text-transform: uppercasel
+    color: $darkest-blue;
+  }
