@@ -1,0 +1,29 @@
+<template>
+    <form id="employee_registration" onsubmit={handleFormSubmit}>
+        <div class="input-container">
+            <label for="employee_name">Name:</label>
+            <input type="text" id="employee_name" name="employee_name" value={username} onchange={handleInputChange}>
+        </div>
+        <div class="input-container">
+            <label for="user-email">Email Address:</label>
+            <input type="email" id="user-email" name="user-email" value={email} onchange={handleInputChange}>
+        </div>
+        <div class="input-container">
+            <label for="user-age">Age:</label>
+            <input type="text" id="user-age" name="user-age" value={age} onchange={handleInputChange}>
+        </div>
+        <button type="submit">
+            Register Employee
+        </button>
+    </form>
+
+    <h3>Employees you added to the company:</h3>
+    <ul id="employee_list">
+        <template for:each={empsobjs} for:item="emp">
+            <li key={emp.id}>
+                Name: {emp.username} | Email: {emp.email} | Age: {emp.age}
+                <button type="button" onclick={handleDelete} data-id={emp.id} style="margin-left: 10px;">Delete</button>
+            </li>
+        </template>
+    </ul>
+</template>

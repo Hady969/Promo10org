@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="LWC Lifecycle Demo" icon-name="custom:custom63">
+        <div class="slds-var-m-around_medium">
+           
+            <div class="slds-text-heading_medium slds-var-m-bottom_medium">
+                Counter Value: <strong>{counter}</strong>
+            </div>
+
+           
+            <template lwc:if={isMessageVisible}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info slds-var-m-bottom_medium" role="alert">
+                    <h2>Hello LWC!</h2>
+                </div>
+            </template>
+
+         
+            <div class="slds-var-m-top_medium">
+                <lightning-button 
+                    label="Increment Counter" 
+                    variant="brand" 
+                    onclick={handleIncrement} 
+                    class="slds-var-m-right_x-small">
+                </lightning-button>
+                
+                <lightning-button 
+                    label="Show/Hide Message" 
+                    variant="neutral" 
+                    onclick={handleToggleMessage}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>
