@@ -1,0 +1,26 @@
+<template>
+    <lightning-input 
+        type="number" 
+        label="Number of Accounts"
+        value={numberOfAccounts} 
+        onchange={handleNumberOfAccountsChange}>
+    </lightning-input>
+
+    <!-- 1. Display data if it exists and has records -->
+    <template if:true={accounts.data}>
+        <ul class="slds-list_dotted">
+            <template for:each={accounts.data} for:item="account">
+                <li key={account.Id}>{account.Name}</li>
+            </template>
+        </ul>
+        
+        <template if:false={accounts.data.length}>
+            <p>No accounts found matching that number.</p>
+        </template>
+    </template>
+
+    <template if:true={accounts.error}>
+        <p style="color:red;">Error fetching accounts!</p>
+        <p style="color:red;">{accounts.error.body.message}</p>
+    </template>
+</template>

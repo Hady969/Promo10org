@@ -1,8 +1,16 @@
 <template>
-
+    <lightning-card title="Parent Component">
         <div class="slds-var-m-around_medium">
-            <c-child-component10 onmyevent={handlegreeting}></c-child-component10>
-        </div>
-    </lightning-card>  
 
+            <c-child-component10 onmyevent={handlegreeting}>
+
+            </c-child-component10>
+
+        </div>
+    
+        <p>{showinggreeting_name}</p>
+        <p>{showinggreeting_email}</p>
+
+    </lightning-card>  
+    
 </template>
