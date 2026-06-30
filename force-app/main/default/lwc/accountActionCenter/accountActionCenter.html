@@ -1,0 +1,58 @@
+<!-- accountFilter.html -->
+<template>
+    <lightning-card title="Account Filtering & Details" icon-name="standard:account">
+        
+        <div class="slds-m-around_medium">
+            <lightning-button label="Hot" variant="brand" onclick={handleAccountAction} class="slds-m-right_small"></lightning-button>
+            <lightning-button label="No Phone" variant="brand" onclick={handleAccountAction} class="slds-m-right_small"></lightning-button>
+            <lightning-button label="Last 10 Accounts" variant="brand" onclick={handleAccountAction}></lightning-button>
+        </div>
+
+        <div class="slds-m-around_medium" style="height: 250px;">
+            <template if:true={displayedAccounts.length}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={displayedAccounts}
+                    columns={columns}
+                    max-row-selection="1"
+                    onrowselection={handleRowSelection}>
+                </lightning-datatable>
+            </template>
+            <template if:false={displayedAccounts.length}>
+                <p class="slds-p-around_medium">No records found. Click a button to filter.</p>
+            </template>
+        </div>
+
+        <template if:true={selectedAccount}>
+            <div class="slds-m-around_medium slds-box slds-theme_default">
+                <h3 class="slds-text-heading_medium slds-m-bottom_small">Account Details</h3>
+                <div class="slds-grid slds-wrap slds-m-bottom_medium">
+                 
+                    <div class="slds-col slds-size_1-of-2">
+                        <strong>Name:</strong> 
+                        <a href={selectedAccount.accountUrl} target="_blank" rel="noreferrer">{selectedAccount.Name}</a>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2"><strong>Rating:</strong> {selectedAccount.Rating}</div>
+                    <div class="slds-col slds-size_1-of-2 slds-m-top_x-small"><strong>Phone:</strong> {selectedAccount.Phone}</div>
+                    <div class="slds-col slds-size_1-of-2 slds-m-top_x-small"><strong>Current Description:</strong> {selectedAccount.Description}</div>
+                </div>
+
+                <div class="slds-form-element slds-m-top_medium">
+                    <lightning-textarea 
+                        label="New Description" 
+                        value={newDescription}
+                        onchange={handleDescriptionChange}
+                        placeholder="Type new description text here...">
+                    </lightning-textarea>
+                    <lightning-button 
+                        label="Update Description" 
+                        variant="success" 
+                        onclick={handleUpdateDescription} 
+                        class="slds-m-top_small"
+                        disabled={isUpdateDisabled}>
+                    </lightning-button>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

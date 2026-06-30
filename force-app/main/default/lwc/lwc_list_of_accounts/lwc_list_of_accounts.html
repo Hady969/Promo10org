@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Dropdown menu" icon-name="custom:custom67">   
+                <lightning-combobox
+                name="ratingFilter"
+                label="Rating Filtering"
+                value ={selectedRating}
+                placeholder="Select Rating"
+                options={ratingOptions}
+                onchange={displayAccount}
+                >
+            </lightning-combobox>
+             <template lwc:if={displayedAccounts.length}>
+                <ul class="slds-list_vertical slds-m-top_medium">
+                    <template for:each={displayedAccounts} for:item="acc">
+                        <li key={acc.Id} class="slds-item slds-box slds-m-bottom_small">
+                            <p><strong>Name:</strong> {acc.Name}</p>
+                            <p><strong>Rating:</strong> {acc.Rating}</p>
+                            <p><strong>Id:</strong> {acc.Id}</p>
+                            <p><strong>Industry:</strong> {acc.Industry}</p>
+                            <p><strong>Phone:</strong> {acc.Phone}</p>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            <template lwc:else>
+                <p class="slds-m-top_medium">No accounts match the selected rating.</p>
+            </template>
+       
+    </lightning-card>
+</template>

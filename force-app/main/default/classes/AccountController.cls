@@ -8,6 +8,11 @@ public with sharing class AccountController{
 
     @AuraEnabled(cacheable=true) 
     public static List<Account> getAccounts(Integer maxRecords){
-        return [SELECT Id, Name FROM Account LIMIT :maxRecords];
+        return [SELECT Id, Name, Rating FROM Account LIMIT :maxRecords];
     }
+    @AuraEnabled(cacheable=true) 
+    public static List<Account> getAllAccounts(){
+        return [SELECT Id, Name, Rating, Phone, Industry FROM Account ];
+    }
+   
 }

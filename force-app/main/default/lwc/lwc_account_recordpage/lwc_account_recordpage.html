@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Account Rating Picklist (Record Type Dependent)" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <p>Current Record Type ID: <strong>{recordTypeId}</strong></p>
+            
+            <template if:true={ratingOptions.length}>
+                <div class="slds-var-m-top_medium">
+                    <p class="slds-text-title_caps">Retrieved Options Array:</p>
+                    <ul>
+                        <template for:each={ratingOptions} for:item="option">
+                            <li key={option.value}>{option.label} (Value: {option.value})</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
